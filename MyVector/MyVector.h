@@ -18,14 +18,15 @@ public:
 	MyVector(MyVector&& x);
 	~MyVector();
 
-	MyVector& operator= (const MyVector& x);
-	MyVector& operator= (MyVector&& x);
+	MyVector& operator=(const MyVector& x);
+	MyVector& operator=(MyVector&& x);
 	T& operator[](size_t idx);
+
+	T* begin();
+	T* end();
 
 	T& front();
 	T& back();
-	T* begin();
-	T* end();
 
 	size_t size();
 	size_t capacity();
@@ -80,6 +81,8 @@ inline MyVector<T>::MyVector(MyVector&& x)
 	, m_size(x.m_size)
 	, m_arr(x.m_arr)
 {
+	m_capacity = 0;
+	m_size = 0;
 	m_arr = nullptr;
 }
 
